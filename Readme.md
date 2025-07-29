@@ -46,7 +46,7 @@ animated-id-card/
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/animated-id-card.git
+   git clone https://github.com/ompandey07/HangingCard
    ```
 
 2. **Navigate into the project folder:**
@@ -74,7 +74,9 @@ animated-id-card/
 ## 👨‍💻 Developer
 
 **Om Pandey**  
-Founder & Frontend Developer at **Finix Dev**  
+Founder  **Finix Dev**
+
+
 📧 [ompandey@finixdev.com](mailto:ompandey@finixdev.com)
 
 ---
