@@ -1,0 +1,345 @@
+body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at center, #0f0f0f, #000);
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* Top attachment bar - FIXED to screen top */
+    .top-attachment {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 12px;
+      background: linear-gradient(135deg, #333, #555, #333);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.8);
+      z-index: 1000;
+      border-bottom: 1px solid #666;
+    }
+
+    .attachment-point {
+      position: fixed;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 16px;
+      background: linear-gradient(135deg, #555, #333);
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.8);
+      z-index: 1001;
+    }
+
+    .attachment-point::before {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 10px;
+      background: #333;
+      border-radius: 50%;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.7);
+    }
+
+    /* Wire connection point - FIXED position */
+    .wire-connection {
+      position: fixed;
+      top: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      background: #444;
+      border-radius: 50%;
+      z-index: 1002;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+
+    .card-container {
+      position: absolute;
+      left: calc(50% - 225px);
+      top: 200px;
+      user-select: none;
+    }
+
+    /* Flexible Wire/Chain - connects fixed point to card */
+    .wire-chain {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 500;
+    }
+
+    .wire-segment {
+      position: absolute;
+      width: 6px;
+      height: 12px;
+      background: linear-gradient(45deg, #555, #333, #555);
+      border-radius: 3px;
+      box-shadow: 
+        0 0 3px rgba(0,0,0,0.8),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+      transform-origin: center top;
+    }
+
+    .wire-segment::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 2px;
+      height: 8px;
+      background: linear-gradient(to bottom, #718096, #4a5568);
+      border-radius: 1px;
+    }
+
+    /* Attachment hook */
+    .card-attachment {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 12px;
+      background: linear-gradient(135deg, #4a5568, #2d3748);
+      border-radius: 6px 6px 0 0;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.3);
+      z-index: 10;
+    }
+
+    .card-attachment::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 6px;
+      background: #2d3748;
+      border-radius: 3px;
+    }
+
+    .card-attachment::after {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      background: #4a5568;
+      border-radius: 50%;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .eye-card {
+      width: 450px;
+      height: 300px;
+      border-radius: 0;
+      background: linear-gradient(145deg, #0a0a0a, #111111);
+      border: 1px solid #222222;
+      color: #ffffff;
+      box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.8),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      cursor: grab;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .eye-card:active {
+      cursor: grabbing;
+    }
+
+    /* Holographic strip */
+    .holo-strip {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 60px;
+      height: 100%;
+      background: linear-gradient(45deg, 
+        rgba(30, 30, 30, 0.3) 0%, 
+        rgba(40, 40, 40, 0.3) 25%, 
+        rgba(30, 30, 30, 0.3) 50%, 
+        rgba(35, 35, 35, 0.3) 75%, 
+        rgba(30, 30, 30, 0.3) 100%);
+      opacity: 0.4;
+    }
+
+    .card-header {
+      padding: 12px 20px;
+      background: linear-gradient(135deg, #000000, #111111);
+      color: white;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+      position: relative;
+      border-bottom: 1px solid #222222;
+      height: 54px; /* Fixed header height */
+    }
+
+    .company-name {
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      color: #ffffff;
+      margin: 0;
+    }
+
+    .card-header img {
+      max-height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      box-shadow: none;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 15px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      height: calc(100% - 54px); /* Account for fixed header height */
+      background: linear-gradient(135deg, #0a0a0a, #0f0f0f);
+    }
+
+    .profile-section {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      width: 110px;
+    }
+
+    .profile-img {
+      width: 100px;
+      height: 120px;
+      border-radius: 4px;
+      border: 2px solid #333333;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+      display: block;
+    }
+
+    .info-section {
+      flex: 1;
+      padding-left: 5px;
+      padding-top: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .employee-name {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffffff;
+      margin: 0 0 8px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      line-height: 1.1;
+    }
+
+    .designation {
+      font-size: 14px;
+      color: #cccccc;
+      font-weight: 500;
+      margin: 0 0 20px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-info {
+      font-size: 12px;
+      line-height: 1.8;
+      color: #ffffff;
+      flex-grow: 1;
+    }
+
+    .contact-info div {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .contact-info strong {
+      color: #dddddd;
+      font-weight: 600;
+      display: inline-block;
+      width: 50px;
+      font-size: 11px;
+    }
+
+    .contact-info i {
+      color: #aaaaaa;
+      font-size: 14px;
+      width: 16px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .contact-value {
+      color: #ffffff;
+      font-size: 12px;
+    }
+
+    .site-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 15px;
+      font-size: 11px;
+      color: #aaaaaa;
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.3s ease;
+    }
+
+    .site-link:hover {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .site-link i {
+      color: #aaaaaa;
+      font-size: 12px;
+      width: 16px;
+      text-align: center;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .card-container {
+        left: calc(50% - 200px);
+        top: 150px;
+      }
+      
+      .eye-card {
+        width: 400px;
+        height: 280px;
+      }
+      
+      .profile-img {
+        width: 80px;
+        height: 100px;
+      }
+      
+      .employee-name {
+        font-size: 20px;
+      }
+    }
