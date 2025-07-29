@@ -7,7 +7,7 @@ A fully animated hanging ID card built using **HTML**, **CSS**, and **Vanilla Ja
 
 ## 📸 Preview
 
-[Insert GIF or Screenshot here]
+![Preview](Preview.png)
 
 ---
 
@@ -32,7 +32,7 @@ A fully animated hanging ID card built using **HTML**, **CSS**, and **Vanilla Ja
 ## 📂 Project Structure
 
 ```
-animated-id-card/
+HangingCard/
 ├── index.html        # Main HTML file
 ├── style.css         # Styling and animations
 ├── script.js         # Hanging logic and interactivity
@@ -51,7 +51,7 @@ animated-id-card/
 
 2. **Navigate into the project folder:**
    ```bash
-   cd animated-id-card
+   cd HangingCard
    ```
 
 3. **Open `index.html` in your browser:**
